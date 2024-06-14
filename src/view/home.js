@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-
 import { CheeatahListText, Title } from '../style/text';
 import { Container, RowContainer } from '../style/container';
-import { CheetahInput } from '../style/input';
-import { CheeatahButton } from '../style/button';
+import { Input } from '../style/input';
+import { Button } from '../style/button';
 import { superheroStore } from '../store/superheroes';
 import { ListSeparator } from '../style/separator';
 import { FlatList } from 'react-native';
@@ -15,31 +14,31 @@ export default Home = observer(({ navigation }) => {
 	const [name, setName] = useState('');
 	const [power, setPower] = useState('');
 
-	addHero = () => {
-		setHeroList(list => [...list, { name, power, id: Math.random() }])
-	}
+	// addHero = () => {
+	// 	setHeroList(list => [...list, { name, power, id: Math.random() }])
+	// }
 
 	return (
 		<Container>
 			<Title>Superheroes</Title>
-			<CheetahInput
+			<Input
 				hint='Name'
 				onChangeText={text => setName(text)}
 			/>
-			<CheetahInput
+			<Input
 				hint='Power'
 				onChangeText={text => setPower(text)}
 			/>
 			<RowContainer>
-				<CheeatahButton
+				<Button
 					title="Add"
 					onPress={()=>superheroStore.addHero({name, power})}
 					marginRight={12}
 				/>
-				<CheeatahButton
+				<Button
 					title="View List"
 					onPress={() => navigation.navigate('List', {
-						list: superheroList,
+						list: superheroStore.superheroes,
 					})}
 				/>
 			</RowContainer>

@@ -5,6 +5,7 @@ import { Container } from '../style/container';
 import { FlatList } from 'react-native';
 import { ListSeparator } from '../style/separator';
 import { superheroStore } from '../store/superheroes';
+import { observer } from 'mobx-react';
 
 export default ListScreen = observer(() => {
 	// const [superheroList, setHeroList] = useState([]);

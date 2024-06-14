@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/view/home'
 import { ThemeProvider } from 'styled-components/native';
+import ListScreen from './src/view/ListScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,14 @@ export default App = () =>
           options={{
             headerTintColor: theme.colors.textLight,
             headerStyle: { backgroundColor: theme.colors.dark }
+          }}
+        />
+        <Stack.Screen
+          name="List"
+          component={ListScreen}
+          options={{
+            headerTintColor: theme.colors.textLight,
+						headerStyle: { backgroundColor: theme.colors.dark }
           }}
         />
       </Stack.Navigator>

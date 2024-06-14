@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-export const CheetahInput = styled.TextInput.attrs(props => ({
+export const Input = styled.TextInput.attrs(props => ({
 	placeholderTextColor: '#a6a6a6',
 	placeholder: props.hint,
 	elevation: 10

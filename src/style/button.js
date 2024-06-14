@@ -20,7 +20,7 @@ const ButtonText = styled.Text`
 	text-align: center;
 `
 
-export const CheeatahButton = ({ onPress, title, fontSize, marginLeft, marginRight }) =>
+export const Button = ({ onPress, title, fontSize, marginLeft, marginRight }) =>
 	<RoundedTouchableOpacity
 		onPress={onPress}
 		marginLeft={marginLeft}
