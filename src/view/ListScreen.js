@@ -1,6 +1,6 @@
 import React/* , { useEffect, useState }  */from 'react';
 
-import { CheeatahListText } from '../style/text';
+import { ListText } from '../style/text';
 import { Container } from '../style/container';
 import { FlatList } from 'react-native';
 import { ListSeparator } from '../style/separator';
@@ -28,7 +28,7 @@ export default ListScreen = observer(() => {
 				style={{ width: '100%', marginTop: 20, paddingBottom: 10 }}
 				ItemSeparatorComponent={() => <ListSeparator />}
 				renderItem={({ item }) => (
-					<CheeatahListText
+					<ListText
 						content={`Name: ${item.name}`}
 						onLongPress={() => superheroStore.deleteHero(item.id)}
 						description={`Power: ${item.power}`}

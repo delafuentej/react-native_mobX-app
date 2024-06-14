@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { CheeatahListText, Title } from '../style/text';
+import { ListText, Title } from '../style/text';
 import { Container, RowContainer } from '../style/container';
 import { Input } from '../style/input';
 import { Button } from '../style/button';
 import { superheroStore } from '../store/superheroes';
 import { ListSeparator } from '../style/separator';
 import { FlatList } from 'react-native';
-import { observer } from 'mobx-react';
+import { Observer } from 'mobx-react';
 
-export default Home = observer(({ navigation }) => {
+
+export default Home = ({ navigation }) => {
 
 	// const [superheroList, setHeroList] = useState([]);=> store/superheroes.js
 	const [name, setName] = useState('');
 	const [power, setPower] = useState('');
+
+
+    const isFormValid = name.trim.length >2 && power.trim().length>4;
 
 	// addHero = () => {
 	// 	setHeroList(list => [...list, { name, power, id: Math.random() }])
@@ -34,6 +38,7 @@ export default Home = observer(({ navigation }) => {
 					title="Add"
 					onPress={()=>superheroStore.addHero({name, power})}
 					marginRight={12}
+                    disabled={!isFormValid}
 				/>
 				<Button
 					title="View List"
@@ -42,19 +47,25 @@ export default Home = observer(({ navigation }) => {
 					})}
 				/>
 			</RowContainer>
-            <FlatList
-				data={superheroStore.superheroes}
-				keyExtractor={(item) => item.id}
-				style={{ width: '100%', marginTop: 20, paddingBottom: 10 }}
-				ItemSeparatorComponent={() => <ListSeparator />}
-				renderItem={({ item }) => (
-					<CheeatahListText
-						content={`Name: ${item.name}`}
-						onLongPress={() => superheroStore.deleteHero(item.id)}
-						description={`Power: ${item.power}`}
-					/>
-				)}
-			/>
+            <Observer>{
+                ()=><FlatList
+                data={superheroStore.superheroes}
+                keyExtractor={(item) => item.id}
+                style={{ width: '100%', marginTop: 20, paddingBottom: 10 }}
+                ItemSeparatorComponent={() => <ListSeparator />}
+                renderItem={({ item }) => (
+                    <ListText
+                        content={`Name: ${item.name}`}
+                        onLongPress={() => superheroStore.deleteHero(item.id)}
+                        description={`Power: ${item.power}`}
+                    />
+                )}
+            />
+                }
+                
+
+            </Observer>
+          
 		</Container>
 	);
-})
+}

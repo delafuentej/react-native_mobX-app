@@ -22,7 +22,7 @@ export const DescriptionText = styled.Text`
   color: ${props => props.color || 'white'};
 `
 
-export const CheeatahListText = ({ onPress, onLongPress, content, description }) => {
+export const ListText = ({ onPress, onLongPress, content, description }) => {
 	const theme = useTheme();
 	return (
 		<Pressable
